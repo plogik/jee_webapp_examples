@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.Cookie;
+import java.net.URLEncoder;
 
 @WebServlet( name="Hello-Servlet", urlPatterns={"/hello"} )
 public class HelloServlet extends HttpServlet {
@@ -15,17 +17,18 @@ public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
               throws ServletException, java.io.IOException {
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("helloform.html");
-        dispatcher.forward(req, resp);
+        resp.sendRedirect("helloform.html");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
               throws ServletException, java.io.IOException {
 
-        req.setAttribute("name", req.getParameter("my-name"));
-        RequestDispatcher dispatcher = req.getRequestDispatcher("sayhello.jsp");
-        dispatcher.forward(req, resp);
+        String name = req.getParameter("my-name");
+        // URL decode to remove illegal cookie characters, such as space etc.
+        name = URLEncoder.encode(name, "UTF-8");
+        Cookie cookie = new Cookie("myname", name);
+        resp.addCookie(cookie);
+        resp.sendRedirect("sayhello.jsp");
     }
-
 }
