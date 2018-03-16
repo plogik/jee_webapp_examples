@@ -8,8 +8,7 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.http.Cookie;
-import java.net.URLEncoder;
+import javax.servlet.http.HttpSession;
 
 @WebServlet( name="Hello-Servlet", urlPatterns={"/hello"} )
 public class HelloServlet extends HttpServlet {
@@ -25,10 +24,10 @@ public class HelloServlet extends HttpServlet {
               throws ServletException, java.io.IOException {
 
         String name = req.getParameter("my-name");
-        // URL decode to remove illegal cookie characters, such as space etc.
-        name = URLEncoder.encode(name, "UTF-8");
-        Cookie cookie = new Cookie("myname", name);
-        resp.addCookie(cookie);
+
+        HttpSession session = req.getSession();
+        session.setAttribute("myname", name);
+
         resp.sendRedirect("sayhello.jsp");
     }
 }

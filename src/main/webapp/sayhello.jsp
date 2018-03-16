@@ -5,8 +5,8 @@
     <title>Hello</title>
 </head>
 <body>
-    <c:if test="${cookie.containsKey('myname')}">
-        Hello ${cookie.myname.value}!
+    <c:if test="${sessionScope.myname != null}">
+        Hello ${myname}!
     </c:if>
 </body>
 </html>
