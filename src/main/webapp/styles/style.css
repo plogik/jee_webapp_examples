@@ -1,0 +1,24 @@
+body {
+
+    /*
+    nice fonts, no perf
+    https://gist.github.com/davidgilbertson/6d0313bc3c6ecb5757e822620e9ebaa4#file-good-enough-css
+    */
+    color: #212121;
+    font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.02em;
+}
+
+label {
+    width:90px;
+    clear:left;
+    text-align:left;
+    padding-right:10px;
+}
+
+input, label {
+    float:left;
+}
