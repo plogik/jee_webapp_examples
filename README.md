@@ -7,8 +7,8 @@ A basic Hello World! servlet and jsp, with xml descriptor. Tag: v1
 Same basic hello world, now with annotation descriptor on the servlet. Tag: v2
 
 ## Version 3
-*Seems i made a mistake when commit:ing this. Version 6 has examples of forwarding actions though*
-~~This example demonstrates GET and POST, where the GET returns the helloform.html and the POST stores the name in an attribute that is then displayed in sayhello.jsp.~~
+*Seems i made a mistake when commit:ing this. Use `git checkout b6801fa940d8300a3f565ada313ac298bbb0904b` instead*
+This example demonstrates GET and POST, where the GET returns the helloform.html and the POST stores the name in an attribute that is then displayed in sayhello.jsp.
 
 ## Version 4
 This version uses a cookie to store the name information, which makes it behave better (the name is remembered between requests). Both doGet and doPost in servlet uses redirect instead of forward so that the browser knows where it is, the url show what resource is used (helloform.html / sayhello.jsp). This version also make use of the core JSTL taglib.
